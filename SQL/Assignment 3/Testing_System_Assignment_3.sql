@@ -1,6 +1,6 @@
-drop database if exists Testing_System_Assignment_2 ;
-CREATE DATABASE if not exists Testing_System_Assignment_2 ;
-USE Testing_System_Assignment_2 ;
+drop database if exists Testing_System_Assignment_3 ;
+CREATE DATABASE if not exists Testing_System_Assignment_3 ;
+USE Testing_System_Assignment_3 ;
 drop table if exists Department;
 CREATE TABLE Department (
 DepartmentID                INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -16,8 +16,8 @@ PositionName                NVARCHAR(50) NOT NULL
 CREATE TABLE `Account` (
 AccountID                   SMALLINT AUTO_INCREMENT PRIMARY KEY ,
 Email                       NVARCHAR(50) NOT NULL ,
-Fullname                    VARCHAR(50) ,
 Username                    NVARCHAR(50) NOT NULL ,
+Fullname                    CHAR(50) ,
 DepartmentID                INT UNSIGNED,
 PositionID                  INT ,
 createDate                  DATE,
