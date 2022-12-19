@@ -17,7 +17,7 @@ CREATE TABLE `Account` (
 AccountID                   SMALLINT AUTO_INCREMENT PRIMARY KEY ,
 Email                       NVARCHAR(50) NOT NULL ,
 Username                    NVARCHAR(50) NOT NULL ,
-Fullname                    CHAR(50) ,
+Fullname                    VARCHAR(50) ,
 DepartmentID                INT UNSIGNED,
 PositionID                  INT ,
 createDate                  DATE,
@@ -58,7 +58,7 @@ FOREIGN KEY  (CategoryID)   REFERENCES CategoryQuestion(CategoryID),
 FOREIGN KEY  (CreatorID)    REFERENCES `Account`(AccountID)
 );
 CREATE TABLE Answer (
-AnswerID                    MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+AnswerID                    INT AUTO_INCREMENT PRIMARY KEY,
 Content                     NVARCHAR(100) NOT NULL,
 QuestionID                  SMALLINT NOT NULL,
 isCorrect                   VARCHAR(50) NOT NULL,
