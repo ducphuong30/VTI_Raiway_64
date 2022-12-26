@@ -28,7 +28,7 @@ CREATE TABLE `Group` (
 GroupID                     INT PRIMARY KEY AUTO_INCREMENT,
 GroupName                   NVARCHAR(50) NOT NULL,
 CreatorID                   SMALLINT,
-CreateDate                  DATE,
+CreateDate                  DATE ,
 FOREIGN KEY (CreatorID )    REFERENCES `Account`(AccountID)
 );
 CREATE TABLE GroupAccount (
@@ -81,7 +81,7 @@ FOREIGN KEY (ExamID)        REFERENCES Exam(ExamID),
 FOREIGN KEY (QuestionID )   REFERENCES Question(QuestionID)
 );
 -- Insert data into department
-INSERT INTO department	(DepartmentName )
+INSERT INTO Department	(DepartmentName )
 VALUE 					('Marketing'),
 						('Sale'),
 						('Bảo vệ'),
@@ -125,7 +125,7 @@ VALUE 				('Testing System'		,   '5'				, '2019-03-05'	),
                     ('VTI Marketing 01'		,   '7'				, '2020-04-07'	),
                     ('Management'			,   '8'				, '2020-04-08'	),
                     ('Chat with love'		,   '9'				, '2020-04-09'	),
-                    ('Vi Ti Ai'				,   '10'			, '2020-04-10'	);
+                    ('Vi Ti Ai'				,   '10'			, '2022-12-10'	);
 
 -- Insert data into group_account
 INSERT INTO GroupAccount	(  GroupID	, AccountID, JoinDate		)
@@ -168,7 +168,7 @@ VALUE 					('Câu hỏi về Java'	,	1		,   '1'			,   '1'			,'2020-04-05'),
 						('Hỏi về ASP.NET'	,	2		,   '1'			,   '7'			,'2020-04-06'),
 						('Hỏi về C++'		,	8		,   '1'			,   '8'			,'2020-04-07'),
 						('Hỏi về SQL'		,	4		,   '2'			,   '9'			,'2020-04-07'),
-						('Hỏi về Python'	,	7		,   '1'			,   '10'		,'2020-04-07');
+						('Hỏi về Python'	,	7		,   '1'			,   '10'		,'2020-12-07');
 
 -- Insert data into answer
 INSERT INTO Answer	(Content		, QuestionID	, isCorrect )

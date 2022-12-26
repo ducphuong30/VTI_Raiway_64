@@ -28,13 +28,33 @@ HAVING SLNV >=3;
 
 
 -- Q5: Viết lệnh để lấy ra danh sách câu hỏi được sử dụng trong đề thi nhiều nhất
+SELECT E.QuestionID, Q.Content 
+FROM ExamQuestion E
+INNER JOIN Question Q ON Q.QuestionID = E.QuestionID
+GROUP BY E.QuestionID
+HAVING COUNT(E.QuestionID) = (SELECT MAX(Content) as maxcountQues 
+							  FROM (
+										SELECT COUNT(E.QuestionID) AS Content 
+                                        FROM ExamQuestion E
+										GROUP BY E.QuestionID
+									) AS countTable
+							  )
+;
 
 
 -- Question 6: Thông kê mỗi category Question được sử dụng trong bao nhiêu Question
-SELECT C.CategoryID, count(*)
-FROM testing_system_assignment_3.CategoryQuestion C
-JOIN testing_system_assignment_3.Question Q  on C.CategoryID = Q.CategoryID 
-GROUP BY C.CategoryID;
+SELECT CQ.CategoryID, CQ.CategoryName , count(Q.CategoryID)
+FROM testing_system_assignment_3.CategoryQuestion CQ
+JOIN testing_system_assignment_3.Question Q  on CQ.CategoryID = Q.CategoryID 
+GROUP BY Q.CategoryID;
+
+-- Question 7: Thông kê mỗi Question được sử dụng trong bao nhiêu Exam
+SELECT Q.QuestionID, Q.Content , count(EQ.QuestionID) 
+FROM ExamQuestion EQ
+RIGHT JOIN Question Q ON Q.QuestionID = EQ.QuestionID
+GROUP BY Q.QuestionID;
+
+
 -- Q12:Lấy thông tin chi tiết của câu hỏi bao gồm: thông tin cơ bản của question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, ...
 
 SELECT Q.QuestionID, C.CategoryID,  T.TypeID, E.CreatorID, An.QuestionID, COUNT(*)
